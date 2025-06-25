@@ -1,0 +1,86 @@
+/* Background with full-page image and dark overlay */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-image: url("https://img.freepik.com/free-photo/ingredients-cabbage-carrot-pie-cabbage-carrots-eggs-flour-milk-butter-spices-white-background_127032-2819.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Dark transparent overlay */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+/* Central UI container */
+.container {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 6rem auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  padding: 2.5rem;
+  border-radius: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  text-align: center;
+  color: #fff;
+}
+
+/* Heading style */
+h1 {
+  font-size: 2.8rem;
+  margin-bottom: 1.5rem;
+  color: #ffcc66;
+  text-shadow: 2px 2px #000;
+}
+
+/* Input and select styling */
+input, select {
+  width: 90%;
+  padding: 0.75rem;
+  margin: 0.6rem 0;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: none;
+}
+
+/* Button styling */
+button {
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  background-color: #ff8c42;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 1rem;
+}
+
+button:hover {
+  background-color: #e67300;
+}
+
+/* Output styling */
+#recipe-output {
+  margin-top: 2rem;
+  white-space: pre-wrap;
+  background-color: #fff;
+  color: #222;
+  padding: 1rem;
+  border-radius: 12px;
+  font-family: 'Courier New', Courier, monospace;
+  text-align: left;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+

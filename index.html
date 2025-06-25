@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TasteWish Dish Generator 🍛</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Dark overlay -->
+  <div class="overlay"></div>
+
+  <!-- Main content -->
+  <div class="container">
+    <h1>🍽️ TasteWish Dish Generator</h1>
+
+    <input type="text" id="ingredients" placeholder="Enter ingredients (comma separated)" />
+    <select id="cuisine">
+      <option value="Indian">Indian</option>
+      <option value="Italian">Italian</option>
+      <option value="Chinese">Chinese</option>
+    </select>
+
+    <button onclick="generateRecipe()">Generate Recipe</button>
+    <div id="recipe-output"></div>
+  </div>
+
+  <script>
+    async function generateRecipe() {
+      const ingredients = document.getElementById("ingredients").value.trim();
+      const cuisine = document.getElementById("cuisine").value;
+      const outputDiv = document.getElementById("recipe-output");
+
+      if (!ingredients) {
+        outputDiv.innerHTML = "<p>Please enter ingredients.</p>";
+        return;
+      }
+
+      outputDiv.innerHTML = "<p>Generating recipe... 🍳</p>";
+
+      try {
+        const response = await fetch("http://127.0.0.1:5000/generate-recipe", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ ingredients, cuisine })
+        });
+
+        const data = await response.json();
+
+        if (data.recipe) {
+          outputDiv.innerHTML = `<pre>${data.recipe}</pre>`;
+        } else {
+          outputDiv.innerHTML = `<p>${data.error}</p>`;
+        }
+      } catch (error) {
+        outputDiv.innerHTML = `<p>Error connecting to server: ${error}</p>`;
+      }
+    }
+  </script>
+</body>
+</html>
